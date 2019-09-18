@@ -14,4 +14,71 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IndividualC" eSuperTypes="#//Competitor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="LocatedModelElement" abstract="true"
+      eSuperTypes="#//NamedModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Элемент модели, положение которого определено в пространстве.&#xD;&#xA;Например: &#xD;&#xA;Мероприятие (Event) имеет место проведения&#xD;&#xA;Соревнующиеся (Competitors) выступают от какой-то территории&#xD;&#xA;Организатор соервнований принадлежит какому-либо регионую Если соревнования всероссийские  - положение в пространстве  - Российская Федерация.&#xD;&#xA;&#xD;&#xA;"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="country" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="district" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="city" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Party" abstract="true" eSuperTypes="#//LocatedModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Все возможные участники спортивного мероприятия"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contactmetods" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Event" instanceClassName="Event" eSuperTypes="#//LocatedModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Мероприятие, включающее в себя проведение дистанций, эстафет и конкурсов по различным спортивным дисциплинам."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="party" lowerBound="1" upperBound="-1"
+        eType="#//Party" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="StartDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EndDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="competition" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="#//Competition">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" lowerBound="1"
+        eType="#//Status"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TeamC" eSuperTypes="#//Competitor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OrganizationP" abstract="true" eSuperTypes="#//Party">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="competitor" upperBound="-1"
+        containment="true">
+      <eGenericType eClassifier="#//Competitor">
+        <eTypeArguments/>
+      </eGenericType>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Sport" eSuperTypes="#//NamedModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Элемент модели, положение которого определено в пространстве.&#xD;&#xA;Например: &#xD;&#xA;Мероприятие (Event) имеет место проведения&#xD;&#xA;Соревнующиеся (Competitors) выступают от какой-то территории&#xD;&#xA;Организатор соервнований принадлежит какому-либо регионую Если соревнования всероссийские  - положение в пространстве  - Российская Федерация.&#xD;&#xA;&#xD;&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Competitor" abstract="true" eSuperTypes="#//Party"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Referee" eSuperTypes="#//Party"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RefereeBoard" eSuperTypes="#//OrganizationP">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referee" lowerBound="1"
+        upperBound="-1" eType="#//Referee" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SportOrganization" eSuperTypes="#//OrganizationP"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Competition" eSuperTypes="#//Sport">
+    <eTypeParameters name="C"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="StartDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="EndDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" lowerBound="1"
+        eType="#//Status"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Status" eSuperTypes="#//NamedModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Элемент модели, положение которого определено в пространстве.&#xD;&#xA;Например: &#xD;&#xA;Мероприятие (Event) имеет место проведения&#xD;&#xA;Соревнующиеся (Competitors) выступают от какой-то территории&#xD;&#xA;Организатор соервнований принадлежит какому-либо регионую Если соревнования всероссийские  - положение в пространстве  - Российская Федерация.&#xD;&#xA;&#xD;&#xA;"/>
+    </eAnnotations>
+  </eClassifiers>
 </ecore:EPackage>

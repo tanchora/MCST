@@ -15,5 +15,40 @@
     <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//NamedModelElement">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//NamedModelElement/name"/>
     </genClasses>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//IndividualC"/>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//LocatedModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//LocatedModelElement/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//LocatedModelElement/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//LocatedModelElement/district"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//LocatedModelElement/city"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//Party">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//Party/contactmetods"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//Event">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//Event/party"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//Event/StartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//Event/EndDate"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//Event/competition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//Event/status"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//TeamC"/>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//OrganizationP">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//OrganizationP/competitor"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//Sport"/>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//Competitor"/>
+    <genClasses image="false" ecoreClass="nasdanikaMCST.ecore#//Referee"/>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//RefereeBoard">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//RefereeBoard/referee"/>
+    </genClasses>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//SportOrganization"/>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//Competition">
+      <genTypeParameters ecoreTypeParameter="nasdanikaMCST.ecore#//Competition/C"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//Competition/StartDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nasdanikaMCST.ecore#//Competition/EndDate"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nasdanikaMCST.ecore#//Competition/status"/>
+    </genClasses>
+    <genClasses ecoreClass="nasdanikaMCST.ecore#//Status"/>
   </genPackages>
 </genmodel:GenModel>
